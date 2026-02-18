@@ -1,0 +1,107 @@
+[
+  {
+    "id": "c8ff2a45-b21a-44a9-92f3-f5f8d2baec4e",
+    "level": 1,
+    "label": "Mind",
+    "prompt": "What has been occupying your mind today?",
+    "parentId": null
+  },
+  {
+    "id": "dd6d6a14-0d78-47a6-88aa-b7379a93e44f",
+    "level": 1,
+    "label": "Body",
+    "prompt": "How is your body feeling today?",
+    "parentId": null
+  },
+  {
+    "id": "5892f180-8072-4f2f-9ac4-a80d5f092d74",
+    "level": 1,
+    "label": "Relationships",
+    "prompt": "What relationship is most present for you right now?",
+    "parentId": null
+  },
+  {
+    "id": "8f7dfe8c-1318-4ba5-8fe8-4286a9145f2e",
+    "level": 2,
+    "label": "Thought Loop",
+    "prompt": "Which thought keeps repeating?",
+    "parentId": "c8ff2a45-b21a-44a9-92f3-f5f8d2baec4e"
+  },
+  {
+    "id": "7e197395-2093-4d59-9af1-93a4d76dc4f0",
+    "level": 2,
+    "label": "Perspective Shift",
+    "prompt": "What perspective could soften this?",
+    "parentId": "c8ff2a45-b21a-44a9-92f3-f5f8d2baec4e"
+  },
+  {
+    "id": "5eb0bcb8-bf73-4a8c-94cf-4af71e61b0f9",
+    "level": 2,
+    "label": "Energy",
+    "prompt": "Where in your body is your energy strongest?",
+    "parentId": "dd6d6a14-0d78-47a6-88aa-b7379a93e44f"
+  },
+  {
+    "id": "2fcd1a43-6a59-4c44-bf40-30c0c590b4f7",
+    "level": 2,
+    "label": "Need",
+    "prompt": "What does your body need most?",
+    "parentId": "dd6d6a14-0d78-47a6-88aa-b7379a93e44f"
+  },
+  {
+    "id": "b452e6c5-d8d8-488c-acf4-dd75c746389d",
+    "level": 2,
+    "label": "Connection",
+    "prompt": "Where did you feel connected today?",
+    "parentId": "5892f180-8072-4f2f-9ac4-a80d5f092d74"
+  },
+  {
+    "id": "48148fc0-6f7a-4a0e-9a8a-f6ef66e2e4c4",
+    "level": 2,
+    "label": "Boundary",
+    "prompt": "What boundary is asking for clarity?",
+    "parentId": "5892f180-8072-4f2f-9ac4-a80d5f092d74"
+  },
+  {
+    "id": "ec44e3a4-f739-48e1-b1cb-f97c2fcb5bbf",
+    "level": 3,
+    "label": "Name the fear",
+    "prompt": "If you say the worry out loud, what does it sound like?",
+    "parentId": "8f7dfe8c-1318-4ba5-8fe8-4286a9145f2e"
+  },
+  {
+    "id": "1898433c-188e-4b43-bf67-8cd9bdfc1f62",
+    "level": 3,
+    "label": "Micro-action",
+    "prompt": "What 10-minute action would help now?",
+    "parentId": "7e197395-2093-4d59-9af1-93a4d76dc4f0"
+  },
+  {
+    "id": "6d693898-f387-4513-8fdf-bf456b851942",
+    "level": 3,
+    "label": "Listen inward",
+    "prompt": "What is your body telling you when you pause?",
+    "parentId": "5eb0bcb8-bf73-4a8c-94cf-4af71e61b0f9"
+  },
+  {
+    "id": "6e0de527-17f7-4d8e-bd1a-e3db9f8a606c",
+    "level": 3,
+    "label": "Ask for care",
+    "prompt": "What kind of care are you ready to receive?",
+    "parentId": "2fcd1a43-6a59-4c44-bf40-30c0c590b4f7"
+  },
+  {
+    "id": "f19af4df-ac0f-43f6-a630-e9de8578f0a5",
+    "level": 3,
+    "label": "Appreciation",
+    "prompt": "What do you appreciate in this relationship right now?",
+    "parentId": "b452e6c5-d8d8-488c-acf4-dd75c746389d"
+  },
+  {
+    "id": "78e74d26-89ea-4b55-90d4-b7a8854d9f6b",
+    "level": 3,
+    "label": "Truthful boundary",
+    "prompt": "What do you need to say with honesty and kindness?",
+    "parentId": "48148fc0-6f7a-4a0e-9a8a-f6ef66e2e4c4"
+  }
+]
