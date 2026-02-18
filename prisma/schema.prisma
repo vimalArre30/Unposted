@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProcessingStatus {
+  PROCESSING
+  READY
+  FAILED
+}
+
+enum JobStatus {
+  QUEUED
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+}
+
+model User {
+  id                 String   @id @default(uuid())
+  email              String   @unique
+  cognitoSub         String   @unique
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  entries            Entry[]
+  leaves             Leaf[]
+}
+
+model QuestionNode {
+  id        String        @id @default(uuid())
+  level     Int
+  label     String
+  prompt    String
+  parentId  String?
+  parent    QuestionNode? @relation("QuestionTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children  QuestionNode[] @relation("QuestionTree")
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  l1Entries Entry[] @relation("EntryL1")
+  l2Entries Entry[] @relation("EntryL2")
+  l3Entries Entry[] @relation("EntryL3")
+
+  @@index([level])
+  @@index([parentId])
+}
+
+model Entry {
+  id               String           @id @default(uuid())
+  userId           String
+  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  l1QuestionId     String
+  l1Question       QuestionNode     @relation("EntryL1", fields: [l1QuestionId], references: [id])
+  l2QuestionId     String
+  l2Question       QuestionNode     @relation("EntryL2", fields: [l2QuestionId], references: [id])
+  l3QuestionId     String
+  l3Question       QuestionNode     @relation("EntryL3", fields: [l3QuestionId], references: [id])
+  audioKey         String
+  transcript       String?
+  aiSummary        String?
+  moodWord         String?
+  processingStatus ProcessingStatus @default(PROCESSING)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  leaf             Leaf?
+  jobs             Job[]
+
+  @@index([userId, createdAt])
+  @@index([processingStatus])
+}
+
+model Leaf {
+  id               String           @id @default(uuid())
+  userId           String
+  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  entryId          String           @unique
+  entry            Entry            @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  sequence         Int              @default(0)
+  colorHex         String?
+  processingStatus ProcessingStatus @default(PROCESSING)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index([userId, createdAt])
+  @@index([processingStatus])
+}
+
+model Job {
+  id        String   @id @default(uuid())
+  entryId   String
+  entry     Entry    @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  leafId    String
+  leaf      Leaf     @relation(fields: [leafId], references: [id], onDelete: Cascade)
+  type      String
+  payload   Json
+  status    JobStatus @default(QUEUED)
+  error     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, createdAt])
+}
